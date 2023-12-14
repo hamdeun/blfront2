@@ -1,0 +1,114 @@
+/* Apply some styling to the main container */
+.container {
+   max-width: 900px;
+   margin: auto;
+ }
+ 
+
+ .btnv {
+   background-color: #28a745; 
+   color: #fff;
+   padding: 10px 15px; 
+   border: none;
+   cursor: pointer;
+   font-size: 16px; 
+   margin-right: 10px; 
+   border-radius: 5px; 
+   transition: background-color 0.3s; 
+   width: 150px;
+  
+ }
+ 
+ .btnv:hover {
+   background-color: #218838; 
+ }
+ 
+
+ .btnp {
+   background-color: #007bff;
+   color: #fff;
+   padding: 10px 15px;
+   border: none;
+   cursor: pointer;
+   font-size: 16px;
+   margin-right: 10px; 
+   border-radius: 5px; 
+   transition: background-color 0.3s;
+   
+ }
+ 
+ .btnp:hover {
+   background-color: #0056b3;
+ }
+ 
+
+ .button-container {
+   margin-top: 40px;
+   margin-left: 500px;
+  
+ }
+ 
+ .form-bl{
+  margin-bottom: 100px;
+  
+ }
+ 
+
+.InfoDest{
+  margin-top:10px;
+  margin-left: 250px;
+}
+.InfoColis{
+  margin-top: 50px;
+  margin-left: 250px;
+}
+hr{
+  margin-left: 400px;
+}
+.btn-excel {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  transition: background-color 0.3s;
+}
+.btn-model{
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  transition: background-color 0.3s;
+}
+
+.saisie{
+  font-size: 20px;
+  font-weight: 200px;
+}
+
+.btn-excel p {
+  margin: 0; 
+}
+
+.import {
+  width: 100%; /* Adjust this as needed */
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 400px; /* Aligns items to the end of the container */
+}
+
+.buttons-container {
+  display: flex;
+  gap: 10px; /* Adjust the space between buttons */
+}
+
+
+.btn-excel:hover {
+  background-color: #079400; 
+}
