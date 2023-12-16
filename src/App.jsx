@@ -5,6 +5,9 @@ import SignUp from './SignUp/SignUp';
 import Home from './Home/Home';
 import AddBL from './AddBL/AddBL';
 import ViewBL from './ViewBL/ViewBL';
+import { store, persistor } from './redux/store/store'; // Adjust the path based on your project structure
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
 
 import ProtectedRoute from './layout/ProtectedRoute';
 import useAuth from './useAuth'; 
@@ -12,9 +15,12 @@ import Importex from './Importex/Importex';
 
 function App() {
   const isAuthenticated = useAuth();
-
+  console.log('isAuthenticated:', isAuthenticated);
   return (
     <div className='app'>
+            <PersistGate loading={null} persistor={persistor}>
+        <Provider store={store}>
+
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/login' element={<Login />} />
@@ -61,6 +67,9 @@ function App() {
           )
         } />
       </Routes>
+      </Provider>
+      </PersistGate>
+
     </div>
   );
 }
