@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import BASE_URL from '../services/apiConfig';
 import {  toast } from 'react-toastify';
+import './Importex.css';
 
 function Importex() {
   const dispatch = useDispatch();

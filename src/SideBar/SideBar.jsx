@@ -18,12 +18,7 @@ export const SideBar=[
         icon:<MdOutlineDocumentScanner />,
         cName:'nav-text'
     },
-    {
-        title:'Import/Export Excel',
-        path:'/excel',
-        icon:<SiMicrosoftexcel />,
-        cName:'nav-text'
-    },
+    
 
 ];
 

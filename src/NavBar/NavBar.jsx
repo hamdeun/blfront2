@@ -1,72 +1,89 @@
-import React from 'react';
-import './NavBar.css'
-import { useState } from 'react';
-import {Container,Nav, Navbar,NavDropdown}  from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.css';
-import { FaBars} from "react-icons/fa6";
-import { AiOutlineClose } from "react-icons/ai";
+import React, { useState } from 'react';
+import { Container, Navbar, Nav } from 'react-bootstrap';
+import { AiOutlineClose } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import { SideBar } from '../SideBar/SideBar';
 
+import { BsClipboardPlus } from "react-icons/bs";
+import { MdOutlineDocumentScanner } from "react-icons/md";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './NavBar.css';
 
-function NavBar() {
-    const[sidebar,setSideBar]=useState(false);
-    const showSidebar=()=>setSideBar(!sidebar);
-    
-    
+const NavBar = () => {
+  const [sidebar, setSidebar] = useState(false);
+
+  const toggleSidebar = () => setSidebar(!sidebar);
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Assuming you use a token for authentication
+    // Add other data removals if necessary
+  
+    // Redirect to the login page or any other page after logout
+    window.location.href = '/login'; // Change the path accordingly
+  
+      console.log('User logged out');
+  };
+
   return (
     <div className='navbar-container'>
-    
-    <Navbar expand="lg" className="navbar">
-    <div className='sidebar-icon'>
-    <Link to='#' className='menu-bar'>
-    <FaBars  size={30} onClick={showSidebar} />
-    </Link>
-    </div>
-      <Container>
-        <Navbar.Brand href="#home"><img src="" alt="" /></Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="options">
-            <NavDropdown title="" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Profil</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-               Déconnexion
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-    <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-        <ul className='nav-menu-items' onClick={showSidebar}>
-            <li className='navbar-toggle'>
-              <Link to='/' className='menu-bars'>
-                <AiOutlineClose />
-              </Link>
-            </li>
-            {SideBar.map((item, index) => {
-              return (
-                
-                <li key={index} className={item.cName} >
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })}
-        </ul>
+      <Navbar expand='lg' className='navbar'>
+        <Container>
+        <Link to='/home' className='nav-link'>
 
-    </nav>
+          <Navbar.Brand href='#'>
+            <img
+              src='/logo.png' 
+              alt='Logo'
+              width='50'
+              height='50'
+              className='d-inline-block align-top'
+            />
+          </Navbar.Brand>
+          </Link>
+
+          <Navbar.Toggle aria-controls='basic-navbar-nav' />
+          <Navbar.Collapse id='basic-navbar-nav'>
+            <Nav className='ml-auto'>
+              {/* Hardcoded items */}
+              <Link to='/home' className='nav-link'>
+                Home
+              </Link>
+              {/* Dynamic items from SideBar */}
+              {SideBar.map((item, index) => (
+                <Link key={index} to={item.path} className='nav-link'>
+                  {item.icon === 'BsClipboardPlus' && <BsClipboardPlus />}
+                  {item.icon === 'MdOutlineDocumentScanner' && <MdOutlineDocumentScanner />}
+                  <span>{item.title}</span>
+                </Link>
+              ))}
+                        <Link to='/logout' className='nav-link' onClick={handleLogout}>
+            Logout
+          </Link>
+
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+        <ul className='nav-menu-items' onClick={toggleSidebar}>
+          <li className='navbar-toggle'>
+            <Link to='#' className='menu-bars'>
+              <AiOutlineClose />
+            </Link>
+          </li>
+          {/* Dynamic items from SideBar */}
+          {SideBar.map((item, index) => (
+  <Link key={index} to={item.path} className='nav-link'>
+    {item.icon === 'BsClipboardPlus' && <BsClipboardPlus />}
+    {item.icon === 'MdOutlineDocumentScanner' && <MdOutlineDocumentScanner />}
+    <span>{item.title}</span>
+  </Link>
+))}
+
+        </ul>
+      </nav>
     </div>
   );
-}
+};
 
 export default NavBar;

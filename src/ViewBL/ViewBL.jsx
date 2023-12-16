@@ -4,6 +4,7 @@ import { FaFileDownload } from 'react-icons/fa';
 import NavBar from '../NavBar/NavBar';
 import { useDispatch, useSelector } from 'react-redux';
 import BASE_URL from '../services/apiConfig';
+import './ViewBL.css';
 
 function ViewBL() {
   const [bills, setBills] = useState([]);

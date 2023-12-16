@@ -1,97 +1,67 @@
-img {
-  width: 20%;
+/* NavBar.css */
+
+.navbar-container {
+  display: flex;
+  flex-direction: column;
 }
 
 .navbar {
-  background-color: rgb(255, 255, 255);
-  width: 100vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 80px;
-  position: sticky;
-  top: 0;
-  z-index: 9999;
+  background-color: #8b7e33; /* Blue background color */
 }
-
-#basic-navbar-nav {
-  margin-left: 400px;
-}
-
-a.option.nav-link:hover {
-  color: #535bf2;
-}
-
-#basic-nav-dropdown:hover {
-  color: #535bf2;
+.navbar a {
+  color: #fff; /* White text color */
 }
 
 .sidebar-icon {
-  margin-left: 60px;
+  margin-right: 15px;
 }
 
-.menu-bars {
-  margin-left: 2rem;
-  font-size: 2rem;
-  background: none;
+.menu-bar {
+  color: #fff;
+  text-decoration: none;
 }
 
 .nav-menu {
-  background-color: rgb(249, 249, 248);
-  width: 300px;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
+  background-color: #007bff; /* Blue background color for the sidebar */
+  width: 250px;
+  height: 100%;
   position: fixed;
   top: 0;
-  left: -100%;
+  left: -250px;
   transition: 350ms;
 }
 
 .nav-menu.active {
   left: 0;
-  transition: 350ms;
-}
-
-.nav-text {
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  padding: 8px 0px 8px 16px;
-  list-style: none;
-  height: 60px;
-  margin-top: 60px;
-}
-
-.nav-text a {
-  text-decoration: none;
-  color: black;
-  font-size: 18px;
-  width: 95%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  padding: 0 16px;
-  border-radius: 4px;
-}
-
-.nav-text a:hover {
-  background-color: #1a83ff;
+  background-color: #007bff;
 }
 
 .nav-menu-items {
-  width: 100%;
+  padding: 0;
+  list-style: none;
 }
 
 .navbar-toggle {
-  background-color: #010311;
-  width: 100%;
-  height: 80px;
   display: flex;
-  justify-content: start;
-  align-items: center;
+  justify-content: flex-end;
+  padding: 15px;
 }
 
-span {
-  margin-left: 16px;
+.menu-bars {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-menu-items li {
+  padding: 15px;
+  text-align: center;
+}
+
+.nav-menu-items a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-menu-items a:hover {
+  text-decoration: underline;
 }

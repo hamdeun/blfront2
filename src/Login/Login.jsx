@@ -32,10 +32,9 @@ function Login() {
 
   return (
     <div className="container-login">
-
       <div className="card">
         <div className="card-image">
-          <img src="" alt="" className="logo" />
+          <img src="./logo.png" alt="" className="logo" />
         </div>
         <form className="card-form" onSubmit={handleSubmit(onSubmit)}>
           <div className="input">
@@ -47,14 +46,14 @@ function Login() {
             <label className="input-label">Mot de passe</label>
           </div>
           <div className="action">
-            <button className="action-button">{loading ? <Spinner /> : 'Se connecter'}</button>
+            <button className="action-button" disabled={loading}>
+              {loading ? <Spinner animation="border" variant="light" /> : 'Se connecter'}
+            </button>
           </div>
         </form>
         <div className="card-info">
-          <a href="#">Mot de passe oublié?</a> <br /> <br />
-          <Link to="/signup">
-            <a href="#">Créer un compte </a>
-          </Link>
+          <Link to="/forgot-password">Mot de passe oublié?</Link> <br /> <br />
+          <Link to="/signup">Créer un compte</Link>
         </div>
       </div>
     </div>
