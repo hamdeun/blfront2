@@ -3,12 +3,15 @@ import axios from 'axios'; // Import Axios for making HTTP requests
 import NavBar from '../NavBar/NavBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import BASE_URL from '../services/apiConfig';
+import {  toast } from 'react-toastify';
 
 function Importex() {
   const dispatch = useDispatch();
   const userId = useSelector((state) => state.auth.user?.id);
   const navigate = useNavigate();
   const [file, setFile] = useState(null);
+	const notify = () => toast.success('File uploaded successfully !');
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
@@ -24,7 +27,8 @@ function Importex() {
       const formData = new FormData();
       formData.append('file', file);
 
-      await axios.post(`http://localhost:3000/upload-groupe/${userId}/upload-excel/${file.name}`, formData);
+      await axios.post(`${BASE_URL}/upload-groupe/${userId}/upload-excel/${file.name}`, formData);
+      notify();
 
       // You may want to handle success and navigation logic here
       console.log('File uploaded successfully.');

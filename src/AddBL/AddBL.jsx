@@ -93,7 +93,6 @@ function AddBL() {
         if (createdBL) {
           notify();
           setBlId(createdBL);
-          console.log(createBL);
         } else {
           console.error('Invalid BL data received:', createdBL.id);
         }
@@ -117,9 +116,9 @@ function AddBL() {
     
 
     try {
-      await axios.get(`http://localhost:3000/upload-groupe/download`);
-
-      // You may want to handle success and navigation logic here
+      const downloadUrl = `${BASE_URL}/upload-groupe/download`;
+      window.location.href = downloadUrl;
+        // You may want to handle success and navigation logic here
       console.log('File downloaded successfully.');
     } catch (error) {
       console.error('Error uploading file:', error);
