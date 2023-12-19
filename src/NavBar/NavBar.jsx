@@ -46,7 +46,7 @@ const NavBar = () => {
             <Nav className='ml-auto'>
               {/* Hardcoded items */}
               <Link to='/home' className='nav-link'>
-                Home
+              Accueil
               </Link>
               {/* Dynamic items from SideBar */}
               {SideBar.map((item, index) => (
@@ -57,7 +57,7 @@ const NavBar = () => {
                 </Link>
               ))}
                         <Link to='/logout' className='nav-link' onClick={handleLogout}>
-            Logout
+                        Se déconnecter
           </Link>
 
             </Nav>

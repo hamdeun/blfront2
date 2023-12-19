@@ -53,6 +53,19 @@ function SignUp() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    for (const key in formData) {
+      if (formData[key] === "") {
+        alert(`Please fill in the ${key} field`);
+        return;
+      }
+    }
+
+    if (!formData.logo) {
+      alert("Please choose a logo");
+      return;
+    }
+
     try {
       setLoading(true);
       const formDataForBackend = new FormData();
@@ -60,7 +73,6 @@ function SignUp() {
         formDataForBackend.append(key, value);
       });
 
-      // Send the FormData object to the backend
       await dispatch(registerUser(formDataForBackend));
 
       notify();

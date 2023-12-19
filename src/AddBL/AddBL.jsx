@@ -53,6 +53,7 @@ function AddBL() {
   const [blId, setBlId] = useState(null); // State to store the BL ID
   const navigate = useNavigate(); // Get the navigate function from React Router
 	const notify = () => toast.success('BL created successfully !');
+
   const [formData, setFormData] = useState({
     nomDest: '',
     numTelephone1: '',
@@ -87,6 +88,13 @@ function AddBL() {
     // Dispatch the createBL action and get the BL ID from the payload
     const handleFormSubmit = async () => {
       try {
+        // Input validation checks
+        if (!formData.nomDest || !formData.numTelephone1  || !formData.address   || !formData.desc || !formData.prixHliv) {
+          // Display an error message or handle validation as needed
+          alert('Veuillez remplir tous les champs obligatoires.');
+          return;
+        }
+  
         // Dispatch the createBL action with the combined form data
         const { payload: createdBL } = await dispatch(createBL({ userId, blData: formData }));
   
@@ -98,8 +106,9 @@ function AddBL() {
         }
       } catch (error) {
         console.error('Error creating BL:', error);
-      } };
-  
+      }
+    };
+    
   
 
   const handleGeneratePdfClick = () => {
