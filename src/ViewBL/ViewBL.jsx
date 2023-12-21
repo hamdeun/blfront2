@@ -17,23 +17,27 @@ function ViewBL() {
   const fetchBills = (page) => {
     setLoading(true);
     const itemsPerPage = 10;
-  
-    const { dateBl, nomDest, blname } = filters;
-  
-    let apiUrl = `${BASE_URL}/bl/${userId}`;
-  
+    const baseApiUrl = `${BASE_URL}/bl/${userId}`;
+
+    let apiUrl ;
+    const { dateBl, nomDest } = filters;
+    
     if (dateBl) {
-      apiUrl = `${apiUrl}/${dateBl}/byDate`;
-    } else if (nomDest) {
-      apiUrl = `${apiUrl}/${nomDest}/getByNomDest`;
-    } else if (blname) {
-      apiUrl = `${apiUrl}/${blname}/getByBlName`;
+      apiUrl = `${baseApiUrl}/${dateBl}/byDate`;
     } else {
-      apiUrl = `${apiUrl}/getAllBlByUser`;
+      apiUrl = `${baseApiUrl}/getAllBlByUser`;
     }
-  
+    
+    
+    // Add filters to the URL
+    if (nomDest) {
+      apiUrl = `${baseApiUrl}/${nomDest}/getAllBlByDest`;
+    }
     apiUrl = `${apiUrl}/${page}/${itemsPerPage}`;
-    fetch(`${BASE_URL}/bl/${userId}/getAllBlByUser`)
+
+    // Rest of your code...
+    
+      fetch(`${BASE_URL}/bl/${userId}/getAllBlByUser`)
     .then((response) => response.json())
     .then((data) => {
       console.log('API Response:', data);
@@ -48,8 +52,9 @@ function ViewBL() {
       .then((response) => response.json())
       .then((data) => {
         console.log('API Response:', data);
-        setBills(data || []);
-      })
+        const billsArray = Array.isArray(data) ? data : [];
+        setBills(billsArray);
+            })
       .catch((error) => console.error('Error fetching bills:', error))
       .finally(() => setLoading(false));
   };
@@ -98,14 +103,7 @@ function ViewBL() {
             onChange={(e) => handleFilterChange('nomDest', e.target.value)}
           />
         </div>
-        <div>
-          <label>BL Name:</label>
-          <input
-            type='text'
-            value={filters.blname}
-            onChange={(e) => handleFilterChange('blname', e.target.value)}
-          />
-        </div>
+      
       </div>
       <div className='table-container'>
         {loading ? (
